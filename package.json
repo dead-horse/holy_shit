@@ -20,7 +20,8 @@
     "moment": "~2.4.0",
     "easymysql": "~0.2.7",
     "logfilestream": "~0.1.0",
-    "ms": "~0.6.1"
+    "ms": "~0.6.1",
+    "var-style": "~0.0.1"
   },
   "devDependencies": {
     "mocha": "*", 

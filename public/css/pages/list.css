@@ -1,0 +1,26 @@
+article {
+  overflow-x: hidden;
+}
+.post {
+  color: #333333;
+  font-size: 16px;
+  display: -webkit-box;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.post .pic {
+  display: -webkit-box;
+}
+.post .pic img {
+  background-color: #cccccc;
+  background-size: cover;
+  width: 80px;
+  height: 80px;
+}
+.post .title {
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  font-size: 18px;
+  margin-left: 10px;
+  padding: 3px;
+}
