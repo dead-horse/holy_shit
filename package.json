@@ -16,14 +16,19 @@
     "mkdirp": "~0.3.5",
     "graceful": "~0.0.5",
     "loader": "~0.0.6",
-    "response-patch": "~0.1.1"
+    "response-patch": "~0.1.1",
+    "moment": "~2.4.0",
+    "easymysql": "~0.2.7",
+    "logfilestream": "~0.1.0",
+    "ms": "~0.6.1"
   },
   "devDependencies": {
     "mocha": "*", 
     "should": "~2.1.0",
     "blanket": "~1.1.4",
     "supertest": "*",
-    "travis-cov": "*"
+    "travis-cov": "*",
+    "mm": "*"
   },
   "scripts": {
     "test": "make test-all",
