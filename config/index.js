@@ -18,6 +18,7 @@ fs.existsSync = fs.existsSync || path.existsSync;
 var pkg = require('../package.json');
 
 var root = path.dirname(__dirname);
+var logdir = path.join(root, '.tmp', 'logs');
 
 var config = {
   version: pkg.version,
@@ -27,6 +28,10 @@ var config = {
   viewCache: true,
   sessionSecret: 'input your own sesson secret',
   sessionCookie: 'input your own session cookie',
+
+  logdir: logdir,
+
+  postsPerPage: 10, // 每页10贴
 
   mysqlServers: [
     {

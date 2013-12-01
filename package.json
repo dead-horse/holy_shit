@@ -27,7 +27,8 @@
     "should": "~2.1.0",
     "blanket": "~1.1.4",
     "supertest": "*",
-    "travis-cov": "*"
+    "travis-cov": "*",
+    "mm": "*"
   },
   "scripts": {
     "test": "make test-all",
