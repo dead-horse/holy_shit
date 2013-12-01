@@ -23,10 +23,21 @@ var config = {
   version: pkg.version,
   webPort: 7001,
   enableCluster: false,
-  debug: true, // if debug
+  debug: true,
   viewCache: true,
   sessionSecret: 'input your own sesson secret',
-  sessionCookie: 'input your own session cookie'
+  sessionCookie: 'input your own session cookie',
+
+  mysqlServers: [
+    {
+      host: 'keydiary.mysql.rds.aliyuncs.com',
+      port: 3306,
+      user: 'god_posts',
+      password: 'internet'
+    }
+  ],
+  mysqlDatabase: 'god_posts',
+  mysqlMaxConnection: 10
 };
 
 // load config/config.js, everything in config.js will cover the same key in index.js
