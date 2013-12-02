@@ -41,7 +41,7 @@
       "pattern": "//^((?!(node_modules|test)).)*$/"
     },
     "travis-cov": {
-      "threshold": 80
+      "threshold": 75
     }
   },
   "engines": {
