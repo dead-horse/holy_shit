@@ -16,9 +16,9 @@ var Posts = require('../../proxy/posts');
 describe('proxy/posts.test.js', function () {
   afterEach(mm.restore);
 
-  describe('getPosts()', function () {
+  describe('listPosts()', function () {
     it('should get posts order by id ok', function (done) {
-      Posts.getPosts(0, 'id', function (err, data) {
+      Posts.listPosts(0, 'id', function (err, data) {
         data[0].id.should.be.a.Number;
         data[0].title.should.be.a.String;
         data[0].url.should.be.a.String;
@@ -30,7 +30,7 @@ describe('proxy/posts.test.js', function () {
     it('should get error', function (done) {
       mm.error(mysql, 'query', 'mock error');
 
-      Posts.getPosts(0, 'id', function (err, data) {
+      Posts.listPosts(0, 'id', function (err, data) {
         err.message.should.equal('mock error');
         done();
       });

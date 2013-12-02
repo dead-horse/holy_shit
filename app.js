@@ -21,6 +21,7 @@ var urlrouter = require('urlrouter');
 
 var config = require('./config');
 var routes = require('./routes');
+var apiRoutes = require('./api_routes');
 
 var PUBLIC_DIR = path.join(__dirname, 'public');
 
@@ -77,6 +78,14 @@ app.use(render({
   helpers: helpers
 }));
 
+
+/**
+ * Data API URL routing
+ */
+var API_BASE_URL = '/api';
+app.use(API_BASE_URL, urlrouter(apiRoutes));
+app.use(API_BASE_URL, apiRoutes.notFound);
+app.use(API_BASE_URL, apiRoutes.error);
 /**
  * Web site URL routing
  */

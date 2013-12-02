@@ -21,7 +21,9 @@
     "easymysql": "~0.2.7",
     "logfilestream": "~0.1.0",
     "ms": "~0.6.1",
-    "var-style": "~0.0.1"
+    "var-style": "~0.0.1",
+    "restful-wrap": "~0.0.2",
+    "parameter": "~0.0.7"
   },
   "devDependencies": {
     "mocha": "*", 
@@ -29,7 +31,9 @@
     "blanket": "~1.1.4",
     "supertest": "*",
     "travis-cov": "*",
-    "mm": "*"
+    "mm": "*",
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*"
   },
   "scripts": {
     "test": "make test-all",
@@ -37,7 +41,7 @@
       "pattern": "//^((?!(node_modules|test)).)*$/"
     },
     "travis-cov": {
-      "threshold": 80
+      "threshold": 75
     }
   },
   "engines": {
