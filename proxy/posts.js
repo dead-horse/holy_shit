@@ -12,7 +12,7 @@ var mysql = require('../common/mysql');
 var config = require('../config');
 var postsPerPage = config.postsPerPage;
 
-var GET_POSTS_SQL = 
+var LIST_POSTS_SQL = 
   'SELECT \
     id, \
     title, \
@@ -22,15 +22,15 @@ var GET_POSTS_SQL =
   FROM \
     posts';
 
-function getPosts(offset, orderCol, callback) {
+function listPosts(offset, orderCol, callback) {
 
-  var sql = GET_POSTS_SQL;
+  var sql = LIST_POSTS_SQL;
   sql = sql + ' ORDER BY ' + orderCol;
   sql = sql + ' LIMIT ' + offset + ',' + postsPerPage;
 
   mysql.query(sql, callback);
 }
-exports.getPosts = getPosts;
+exports.listPosts = listPosts;
 
 var GET_POST_SQL = 
   'SELECT \
@@ -48,16 +48,36 @@ var GET_POST_SQL =
 
 function getPost(id, callback) {
   mysql.queryOne({sql: GET_POST_SQL, params: {id: id}}, function (err, row) {
-    if (err) {
-      return callback(err);
+    if (err || !row) {
+      return callback(err, row);
     }
-    row = row || {};
     row.viewNum = Number(row.viewNum) || 0;
     row.goodNum = Number(row.goodNum) || 0;
     return callback(null, row);
   });
 }
 exports.getPost = getPost;
+
+var ADD_POST_SQL = 
+  'INSERT INTO posts(title, url, pic_url, view_num, good_num, gmt_created)\
+  VALUES(:title, :url, :pic_url, 0, 0, NOW())';
+function addPost(params, callback) {
+  var query = {
+    title: params.title,
+    url: params.url,
+    pic_url: params.picUrl
+  };
+  mysql.query({sql: ADD_POST_SQL, params: query}, function (err, data) {
+    if (err) {
+      if (err.code === 'ER_DUP_ENTRY') {
+        err.message = 'post#' + params.url + ' exists';
+      }
+      return callback(err);
+    }
+    getPost(data.insertId, callback);
+  });
+}
+exports.addPost = addPost;
 
 var UPDATE_VIEW_NUM_SQL = 
   'UPDATE posts SET view_num = view_num + 1 WHERE id = :id';

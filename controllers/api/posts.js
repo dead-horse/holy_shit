@@ -21,7 +21,7 @@ exports.list = verifyParams({
   var page = parseInt(params.page, 10) || 1;
   var offset = (page - 1) * postsPerPage;
 
-  Posts.getPosts(offset, orderCol, callback);
+  Posts.listPosts(offset, orderCol, callback);
 });
 
 exports.one = verifyParams({
