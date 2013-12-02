@@ -25,22 +25,22 @@ exports.list = verifyParams({
 });
 
 exports.one = verifyParams({
-  id: {idId: true}
+  id: {isId: true}
 }, function (params, callback) {
-  var id = parseInt(params.id, 10) || 0;
+  var id = parseInt(params.id, 10);
   Posts.getPost(id, callback);
 });
 
 exports.view = verifyParams({
-  id: {idId: true}
+  id: {isId: true}
 }, function (params, callback) {
-  var id = parseInt(params.id, 10) || 0;
+  var id = parseInt(params.id, 10);
   Posts.updateViewNum(id, callback);
 });
 
 exports.good = verifyParams({
-  id: {idId: true}
+  id: {isId: true}
 }, function (params, callback) {
-  var id = parseInt(params.id, 10) || 0;
+  var id = parseInt(params.id, 10);
   Posts.updateGoodNum(id, callback);
 });
