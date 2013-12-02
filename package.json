@@ -31,7 +31,9 @@
     "blanket": "~1.1.4",
     "supertest": "*",
     "travis-cov": "*",
-    "mm": "*"
+    "mm": "*",
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*"
   },
   "scripts": {
     "test": "make test-all",
