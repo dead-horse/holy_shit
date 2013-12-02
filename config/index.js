@@ -54,4 +54,6 @@ if (fs.existsSync(customConfig)) {
   }
 }
 
+mkdirp.sync(config.logdir);
+
 module.exports = config;
