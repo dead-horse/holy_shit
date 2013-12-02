@@ -1,4 +1,10 @@
 
+0.0.2 / 2013-12-02 
+==================
+
+  * update readme, rename nodectl to nodejsctl
+  * add production start sh
+
 0.0.1 / 2013-12-02 
 ==================
 
