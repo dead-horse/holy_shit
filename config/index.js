@@ -25,7 +25,7 @@ var config = {
   webPort: 7001,
   enableCluster: false,
   debug: true,
-  viewCache: true,
+  viewCache: false,
   sessionSecret: 'input your own sesson secret',
   sessionCookie: 'input your own session cookie',
 

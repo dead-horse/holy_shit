@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>列表页</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <script src="http://cdn.staticfile.org/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="/public/js/lib/ejs.js"></script>
+    <script src="/public/js/lib/gesture.js"></script>
+    <script src="/public/js/base.js"></script>
+    <script src="/public/js/utils.js"></script>
+    <script src="/public/js/pages/list.js"></script>
+    <link href="/public/css/base.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/pages/list.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <script id="tpl_posts" type="text/template">
+      {% for (var i = 0; i < locals.posts.length; i++) {
+          var item = locals.posts[i];
+      %}
+      <div class="post" data-url="{%- item.url %}" data-id="{%= item.id %}">
+        <div class="pic">
+          <img src="{%- item.pic_url %}" alt="{%- item.title %}" />
+        </div>
+        <div class="title">{%- item.title %}</div>
+      </div>
+      {% } %}
+    </script>
+    <div class="act">
+      <div class="loading">
+        <img src="/public/img/loading.gif" alt="加载中" />
+      </div>
+      <article id="posts-container"></article>
+    </div>
+    <div class="error-tip">
+      <div class="error-tip-msg">数据出现异常, 请点击刷新 :-(</div>
+    </div>
+  </body>
+</html>
