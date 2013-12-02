@@ -4,9 +4,24 @@
 
 ## How to run it  
 
+### In the develop env
+
 ```
+#first install all the dependencies
 $ make install
+
+#run the server
 $ node dispatch.js
+#or use node-dev
+$ node-dev dispatch.js
+```
+
+### In the production env
+1. First need run `make install` to install all the dependencies
+2. Then use the shell `bin/nodejsctl` to `start|stop|restart|status` the service.   
+
+```
+bin/nodejsctl start
 ```
 
 ## How to change the config  
