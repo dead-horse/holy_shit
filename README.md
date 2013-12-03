@@ -1,6 +1,8 @@
 #holy_shit
 [![travis-ci](https://secure.travis-ci.org/dead-horse/holy_shit.png)](https://travis-ci.org/dead-horse/holy_shit)
-[![Coverage Status](https://coveralls.io/repos/dead-horse/holy_shit/badge.png)](https://coveralls.io/r/dead-horse/holy_shit)
+[![Coverage Status](https://coveralls.io/repos/dead-horse/holy_shit/badge.png)](https://coveralls.io/r/dead-
+horse/holy_shit)
+[![Dependency Status](https://gemnasium.com/dead-horse/holy_shit.png)](https://gemnasium.com/dead-horse/holy_shit)
 
 ## How to run it  
 
