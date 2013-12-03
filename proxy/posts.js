@@ -25,7 +25,7 @@ var LIST_POSTS_SQL =
 function listPosts(offset, orderCol, callback) {
 
   var sql = LIST_POSTS_SQL;
-  sql = sql + ' ORDER BY ' + orderCol;
+  sql = sql + ' ORDER BY ' + orderCol + ' DESC';
   sql = sql + ' LIMIT ' + offset + ',' + postsPerPage;
 
   mysql.query(sql, callback);
