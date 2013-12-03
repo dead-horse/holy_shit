@@ -28,7 +28,7 @@ describe('controllers/api/posts.js', function () {
       .end(function (err, res) {
         should.not.exist(err);
         res.body.should.be.an.Array;
-        res.body[0].should.have.keys(['id', 'title', 'url', 'pic_url', 'gmt_created']);
+        res.body[0].should.have.keys(['id', 'title', 'url', 'pic_url', 'gmt_created', 'view_num', 'good_num']);
         done();
       });
     });

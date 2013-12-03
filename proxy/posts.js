@@ -18,7 +18,9 @@ var LIST_POSTS_SQL =
     title, \
     url, \
     gmt_created AS gmtCreated, \
-    pic_url AS picUrl \
+    pic_url AS picUrl, \
+    view_num AS viewNum, \
+    good_num AS goodNum \
   FROM \
     posts';
 

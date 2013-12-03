@@ -24,6 +24,8 @@ describe('proxy/posts.test.js', function () {
         data[0].url.should.be.a.String;
         data[0].gmtCreated.should.be.a.String;
         data[0].picUrl.should.be.a.String;
+        data[0].viewNum.should.be.above(-1);
+        data[0].goodNum.should.be.above(-1);        
         done(err);
       });
     });
@@ -59,4 +61,40 @@ describe('proxy/posts.test.js', function () {
       });
     });
   });
+
+  describe('updateViewNum()', function () {
+    it('should update view ok', function (done) {
+      Posts.updateViewNum(1, function (err, data) {
+        should.not.exist(err);
+        data.affectedRows.should.equal(1);
+        done();
+      });
+    });
+
+    it('should error by mysql', function (done) {
+      mm.error(mysql, 'query', 'mock error');
+      Posts.updateViewNum(1, function (err, data) {
+        err.message.should.equal('mock error');
+        done();
+      });      
+    });
+  });
+
+  describe('updateGoodNum()', function () {
+    it('should update good ok', function (done) {
+      Posts.updateGoodNum(1, function (err, data) {
+        should.not.exist(err);
+        data.affectedRows.should.equal(1);
+        done();
+      });
+    });
+
+    it('should error by mysql', function (done) {
+      mm.error(mysql, 'query', 'mock error');
+      Posts.updateGoodNum(1, function (err, data) {
+        err.message.should.equal('mock error');
+        done();
+      });      
+    });
+  });  
 });
