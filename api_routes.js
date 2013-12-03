@@ -13,6 +13,7 @@
 var Posts = require('./controllers/api/posts');
 var restfulWrap = require('restful-wrap');
 var transformer = require('var-style');
+var logger = require('./common/logger');
 var config = require('./config');
 
 function apiRoutes(app) {
@@ -22,11 +23,14 @@ function apiRoutes(app) {
   });
   api.get('/posts', Posts.list);
   api.get('/posts/:id', Posts.one);
-  api.get('/posts/:id/good', Posts.good);
-  api.get('/posts/:id/view', Posts.view);
+  api.patch('/posts/:id/good', Posts.good);
+  api.patch('/posts/:id/view', Posts.view);
 }
 
 apiRoutes.notFound = restfulWrap.notFound();
-apiRoutes.error = restfulWrap.error(config);
+apiRoutes.error = restfulWrap.error({
+  logger: logger,
+  debug: config.debug
+});
 
 module.exports = apiRoutes;

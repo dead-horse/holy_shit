@@ -54,7 +54,7 @@ app.use(connect.session({
 }));
 
 //handle csrf
-app.use(connect.csrf());
+// app.use(connect.csrf());
 
 /**
  * res.render helpers
@@ -65,9 +65,9 @@ var helpers = {
   Loader: function () {
     return Loader;
   },
-  csrf: function (req) {
-    return req.csrfToken() || '';
-  }
+  // csrf: function (req) {
+  //   return req.csrfToken() || '';
+  // }
 };
 
 app.use(render({
