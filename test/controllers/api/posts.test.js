@@ -12,6 +12,8 @@
 var app = require('../../../app');
 var request = require('supertest')(app);
 var should = require('should');
+var mm = require('mm');
+var Posts = require('../../../proxy/posts');
 
 describe('controllers/api/posts.js', function () {
   before(function (done) {
@@ -59,4 +61,44 @@ describe('controllers/api/posts.js', function () {
       .expect(404, done);
     });
   });
+
+  describe('PATCH /api/posts/:id/good', function() {
+    afterEach(mm.restore);
+
+    it('should patch /api/posts/1/good ok', function (done) {
+      request.patch('/api/posts/1/good')
+      .expect(204, done);
+    });
+
+    it('should patch /api/posts/10000/good not exist', function (done) {
+      request.patch('/api/posts/10000/good')
+      .expect(500, done);
+    });    
+
+    it('should patch /api/posts/10000/good not exist', function (done) {
+      mm.error(Posts, 'updateGoodNum', 'mock error');
+      request.patch('/api/posts/10000/good')
+      .expect(500, done);
+    });    
+  });
+
+  describe('PATCH /api/posts/:id/view', function() {
+    afterEach(mm.restore);
+
+    it('should patch /api/posts/1/view ok', function (done) {
+      request.patch('/api/posts/1/view')
+      .expect(204, done);
+    });
+
+    it('should patch /api/posts/10000/view not exist', function (done) {
+      request.patch('/api/posts/10000/view')
+      .expect(500, done);
+    });    
+
+    it('should patch /api/posts/10000/view not exist', function (done) {
+      mm.error(Posts, 'updateViewNum', 'mock error');
+      request.patch('/api/posts/10000/view')
+      .expect(500, done);
+    });    
+  });  
 });

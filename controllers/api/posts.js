@@ -35,12 +35,28 @@ exports.view = verifyParams({
   id: {isId: true}
 }, function (params, callback) {
   var id = parseInt(params.id, 10);
-  Posts.updateViewNum(id, callback);
+  Posts.updateViewNum(id, function (err, data) {
+    if (err) {
+      return callback(err);
+    }
+    if (data.affectedRows !== 1) {
+      return callback(new Error('post #' + id + ' do not exist'));
+    }
+    callback(null, null);
+  });
 });
 
 exports.good = verifyParams({
   id: {isId: true}
 }, function (params, callback) {
   var id = parseInt(params.id, 10);
-  Posts.updateGoodNum(id, callback);
+  Posts.updateGoodNum(id, function (err, data) {
+    if (err) {
+      return callback(err);
+    }
+    if (data.affectedRows !== 1) {
+      return callback(new Error('post #' + id + ' do not exist'));
+    }    
+    callback(null, null);
+  });
 });
