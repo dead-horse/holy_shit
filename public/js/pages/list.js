@@ -3,7 +3,7 @@ $(function ($) {
   // 重试次数
   var retry = 0;
   var postsTemplate = ejs.compile(APP.getTemplate('posts'));
-
+  var postsData = {};
   var Page = {
     $root: null,
     $postsContainer: null,
@@ -25,6 +25,9 @@ $(function ($) {
         }
         data = data || [];
         self.render(data);
+        for (var i = 0; i < data.length; i++) {
+          postsData[data[i].id] = data[i];
+        }
       });
     },
     render: function (data) {
@@ -38,10 +41,7 @@ $(function ($) {
       this.$root.delegate('.post', 'tap', function (event) {
         var target = $(event.currentTarget);
         if (target) {
-          APP.bridgeSend('openPost', {
-            url: target.data('url') || '',
-            id: target.data('id') || ''
-          });
+          APP.bridgeSend('openPost', postsData[target.data('id')]);
         }
       });
     },
