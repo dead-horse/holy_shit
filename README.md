@@ -99,12 +99,12 @@ $ tree
 $ git summary 
 
  project  : holy_shit
- repo age : 2 days ago
- commits  : 13
- active   : 6 days
- files    : 35
+ repo age : 3 days ago
+ commits  : 28
+ active   : 13 days
+ files    : 36
  authors  : 
-     9  dead_horse              69.2%
-     3  巴思                  23.1%
-     1  rockdai                 7.7%
+    20  dead_horse              71.4%
+     5  rockdai                 17.9%
+     3  巴思                  10.7%
 ```
