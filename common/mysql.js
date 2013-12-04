@@ -8,34 +8,26 @@
  * Module dependencies.
  */
 
+
 var config = require('../config');
-var easymysql = require('easymysql');
-var logger = require('./logger');
+var mysql = require('mysql');
 
-var client = easymysql.create({maxconnection: config.mysqlMaxConnection});
+// TODO: query timeout
+var pool = exports.pool = mysql.createPool(config.mysql);
 
-client.on('error', function (err) {
-  logger.error(err);
-});
-
-for (var i = 0; i < config.mysqlServers.length; i++) {
-  var item = config.mysqlServers[i];
-  client.addserver({
-    host: item.host,
-    port: item.port,
-    user: item.user,
-    password: item.password,
-    database: config.mysqlDatabase,
-  });
-}
-
-client.queryOne = function queryOne(query, callback) {
-  this.query(query, function (err, rows) {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, rows && rows[0]);
-  });
+exports.query = function (sql, values, cb) {
+  pool.query(sql, values, cb);
 };
 
-module.exports = client;
+exports.queryOne = function (sql, values, cb) {
+  if (typeof values === 'function') {
+    cb = values;
+    values = null;
+  }
+  exports.query(sql, values, function (err, rows) {
+    if (rows) {
+      rows = rows[0];
+    }
+    cb(err, rows);
+  });
+};

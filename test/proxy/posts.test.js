@@ -22,7 +22,7 @@ describe('proxy/posts.test.js', function () {
         data[0].id.should.be.a.Number;
         data[0].title.should.be.a.String;
         data[0].url.should.be.a.String;
-        data[0].gmtCreated.should.be.a.String;
+        data[0].gmtCreated.should.be.a.Date;
         data[0].picUrl.should.be.a.String;
         data[0].viewNum.should.be.above(-1);
         data[0].goodNum.should.be.above(-1);        
@@ -45,7 +45,7 @@ describe('proxy/posts.test.js', function () {
         data.id.should.be.a.Number;
         data.title.should.be.a.String;
         data.url.should.be.a.String;
-        data.gmtCreated.should.be.a.String;
+        data.gmtCreated.should.be.a.Date;
         data.picUrl.should.be.a.String;
         data.viewNum.should.be.above(-1);
         data.goodNum.should.be.above(-1);

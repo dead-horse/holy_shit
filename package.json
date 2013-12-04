@@ -18,7 +18,7 @@
     "loader": "~0.0.6",
     "response-patch": "~0.1.1",
     "moment": "~2.4.0",
-    "easymysql": "~0.2.7",
+    "mysql": "2.0.0-rc1",    
     "logfilestream": "~0.1.0",
     "ms": "~0.6.1",
     "var-style": "~0.0.1",

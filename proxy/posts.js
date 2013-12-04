@@ -46,10 +46,10 @@ var GET_POST_SQL =
   FROM \
     posts \
   WHERE \
-    id = :id';
+    id = ?';
 
 function getPost(id, callback) {
-  mysql.queryOne({sql: GET_POST_SQL, params: {id: id}}, function (err, row) {
+  mysql.queryOne(GET_POST_SQL, [id], function (err, row) {
     if (err || !row) {
       return callback(err, row);
     }
@@ -62,14 +62,10 @@ exports.getPost = getPost;
 
 var ADD_POST_SQL = 
   'INSERT INTO posts(title, url, pic_url, view_num, good_num, gmt_created)\
-  VALUES(:title, :url, :pic_url, 0, 0, NOW())';
+  VALUES(?, ?, ?, 0, 0, NOW())';
 function addPost(params, callback) {
-  var query = {
-    title: params.title,
-    url: params.url,
-    pic_url: params.picUrl
-  };
-  mysql.query({sql: ADD_POST_SQL, params: query}, function (err, data) {
+  var values = [params.title, params.url, params.picUrl];
+  mysql.query(ADD_POST_SQL, values, function (err, data) {
     if (err) {
       if (err.code === 'ER_DUP_ENTRY') {
         err.message = 'post#' + params.url + ' exists';
@@ -82,18 +78,18 @@ function addPost(params, callback) {
 exports.addPost = addPost;
 
 var UPDATE_VIEW_NUM_SQL = 
-  'UPDATE posts SET view_num = view_num + 1 WHERE id = :id';
+  'UPDATE posts SET view_num = view_num + 1 WHERE id = ?';
 
 function updateViewNum(id, callback) {
-  mysql.query({sql: UPDATE_VIEW_NUM_SQL, params: {id: id}}, callback);
+  mysql.query(UPDATE_VIEW_NUM_SQL, [id], callback);
 }
 exports.updateViewNum = updateViewNum;
 
 var UPDATE_GOOD_NUM_SQL = 
-  'UPDATE posts SET good_num = good_num + 1 WHERE id = :id';
+  'UPDATE posts SET good_num = good_num + 1 WHERE id = ?';
 
 function updateGoodNum(id, callback) {
-  mysql.query({sql: UPDATE_GOOD_NUM_SQL, params: {id: id}}, callback);
+  mysql.query(UPDATE_GOOD_NUM_SQL, [id], callback);
 }
 exports.updateGoodNum = updateGoodNum;
 

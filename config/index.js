@@ -32,17 +32,15 @@ var config = {
   logdir: logdir,
 
   postsPerPage: 10, // 每页10贴
-
-  mysqlServers: [
-    {
-      host: 'keydiary.mysql.rds.aliyuncs.com',
-      port: 3306,
-      user: 'god_posts',
-      password: 'internet'
-    }
-  ],
-  mysqlDatabase: 'god_posts',
-  mysqlMaxConnection: 10
+  mysql: {
+    host: 'keydiary.mysql.rds.aliyuncs.com',
+    port: 3306,
+    user: 'god_posts',
+    password: 'internet',
+    database: 'god_posts',
+    connectionLimit: 5,
+    multipleStatements: true
+  }
 };
 
 // load config/config.js, everything in config.js will cover the same key in index.js
